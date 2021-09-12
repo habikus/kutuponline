@@ -4,8 +4,7 @@ var expressLayouts = require('express-ejs-layouts');
 var app = express();
 var mysql = require('mysql');
 var path = require('path');
-const port = process.env.port || 5500 ;
-//const port = 3000;
+const port = process.env.port || 5500;
 
 const session = require('express-session');
 app.use(session({

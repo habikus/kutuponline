@@ -29,19 +29,21 @@ app.use(expressLayouts);
 // connect to database
 function baglan() {
     con = mysql.createConnection({
-        /*  
+        
         host: "89.163.146.147",
         user: "yilsoft_kutup", 
         password: "of.616161",       
         database: "yilsoft_kutup",  
-        */  
-          host: "localhost",
+       
+      /*      host: "localhost",
           user: "root",
           password: "",
-          database: "yilsoft_kutup",
-                 
+          database: "yilsoft_kutup",                 
           timezone: 'utc' // çoook şükür elhamdülillah   "UTC+0"
+      */  
+
         });
+        
         /*
         con.connect(function(err) {
             if (err) throw err;

@@ -4,7 +4,7 @@ var expressLayouts = require('express-ejs-layouts');
 var app = express();
 var mysql = require('mysql');
 var path = require('path');
-const port = process.env.port || 5500;
+const port = process.env.PORT || 5500;
 
 const session = require('express-session');
 app.use(session({
@@ -638,8 +638,9 @@ app.get('/yeniKitap', function (req, res) {
 });
  
 
+
 app.listen(port, () => {
-    console.log("Örnek uygulama dinleniyor inşallah." + port);
+   // console.log("Örnek uygulama dinleniyor inşallah." + port);
   })
  
   

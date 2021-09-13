@@ -4,7 +4,8 @@ var expressLayouts = require('express-ejs-layouts');
 var app = express();
 var mysql = require('mysql');
 var path = require('path');
-const port = process.env.PORT || 5500;
+const port = process.env.PORT || 5500 ;
+//const port = 3000;
 
 const session = require('express-session');
 app.use(session({
@@ -83,13 +84,7 @@ app.get('/sefkat', function (req, res) {
 app.get('giris', function (req, res) {
     res.render('giris');
 });
-
-app.get('/giris', function (req, res) {
-    res.render('giris');
-});
-
-
-app.post('/giris1', function (req, res) {
+app.post('/giris', function (req, res) {
     kulanici = req.body.username;
     var sifre = req.body.password;
     baglan();
@@ -644,9 +639,8 @@ app.get('/yeniKitap', function (req, res) {
 });
  
 
-
 app.listen(port, () => {
-   // console.log("Örnek uygulama dinleniyor inşallah." + port);
+    console.log("Örnek uygulama dinleniyor inşallah." + port);
   })
  
   
@@ -655,5 +649,3 @@ app.listen(port, () => {
  // baglan()
  // console.log('Örnek Bu uygulama çalışıyor  http://localhost:${port}')
  // })
- 
- 

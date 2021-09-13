@@ -83,10 +83,16 @@ app.get('/sefkat', function (req, res) {
 app.get('giris', function (req, res) {
     res.render('giris');
 });
-app.post('/giris', function (req, res) {
+
+app.get('/giris', function (req, res) {
+    res.render('giris');
+});
+
+
+app.post('/giris1', function (req, res) {
     kulanici = req.body.username;
     var sifre = req.body.password;
-  //  baglan();
+    baglan();
     var sql = 'SELECT * FROM uyeler WHERE Email LIKE ' + mysql.escape(kulanici) +
         'and Password LIKE ' + mysql.escape(sifre);
     con.query(sql, function (error, results) {

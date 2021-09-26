@@ -6,6 +6,21 @@
     tr {
         cursor: pointer;
     }
+  th {
+         font-size: 14px; 
+    }
+   td {
+        font-size: 14px;
+    }
+    .labeltr {
+        font-size: 14px;
+        color: rgb(20, 55, 95);
+    }
+    .editTr{
+        font-size: 15px;
+        color: rgb(0,0,255);
+        font-weight: 550;
+    } 
 </style>
 <div class="container">
     <h1>İŞLEMLER SAYFASI</h1>
@@ -354,7 +369,7 @@
                 [0, "desc"]
             ],
             "ajax": {
-                "url": '/hareketyukle',
+                "url": '/kutuphane/hareketyukle',
                 "type": "GET",
                 dataType: "json",
                 "dataSrc": ""
@@ -428,7 +443,7 @@
                 [1, "asc"]
             ],
             "ajax": {
-                "url": '/kitapyukle',
+                "url": '/kutuphane/kitapyukle',
                 "type": "GET",
                 "datatype": "json",
                 "dataSrc": "",
@@ -476,7 +491,7 @@
                 [1, "asc"]
             ],
             "ajax": {
-                "url": '/ogrenciyukle',
+                "url": '/kutuphane/ogrenciyukle',
                 "type": "GET",
                 "datatype": "json",
                 "dataSrc": "",
@@ -540,7 +555,7 @@
         document.getElementById("hareketid").value = data; //linkteki data row yani
         $.ajax({
             type: 'POST',
-            url: "./getirhareket",
+            url: "/kutuphane/getirhareket",
             data: {
                 kelime: data
             },
@@ -569,7 +584,7 @@
 
         $.ajax({
             type: 'POST',
-            url: "./getirhareket",
+            url: "/kutuphane/getirhareket",
             data: {
                 kelime: data
             },
@@ -601,7 +616,7 @@
     function sil(data) {
         $.ajax({
             type: 'POST',
-            url: "./silhareket",
+            url: "/kutuphane/silhareket",
             data: {
                 kelime: data
             },
@@ -626,7 +641,7 @@
         console.log(kId)
         $.ajax({
             type: 'POST',
-            url: "./guncellehareket",
+            url: "/kutuphane/guncellehareket",
             data: {
                 idtxt: idtext,
                 aciklamatxt: aciklamatext,
@@ -653,7 +668,7 @@
         var ogrenciaditext = document.getElementById("ogrenciadiK").value;
         $.ajax({
             type: 'POST',
-            url: "./kaydethareket",
+            url: "/kutuphane/kaydethareket",
             data: {
                 //   idtxt: idtext,
                 aciklamatxt: aciklamatext,
@@ -680,7 +695,7 @@
         document.getElementById("hareketid").value = data; //linkteki data row yani
         $.ajax({
             type: 'POST',
-            url: "./getirhareket",
+            url: "/kutuphane/getirhareket",
             data: {
                 kelime: data.hareketlerid
             },

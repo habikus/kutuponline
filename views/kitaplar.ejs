@@ -7,30 +7,43 @@
     tr {
         cursor: pointer;
     }
-
+    th {
+         font-size: 14px; 
+    }
+   td {
+        font-size: 14px;
+    }
     .labeltr {
-        font-weight: 600;
-        font-size: 16px;
+        font-size: 14px;
         color: rgb(20, 55, 95);
     }
+    .editTr{
+        font-size: 15px;
+        color: rgb(0,0,255);
+        font-weight: 550;
+    }
 
-    .orta {
+    .ortacon {
+        margin-left: 6%;
+        margin-right: 5%;
+    }
+  .orta {
         margin: auto;
     }
 </style>
 
-<div class="container">
+<div class="ortacon">
     <div class="row" style="border: darkolivegreen 2px solid;     box-shadow: 0 2px 8px 2px rgb(68, 45, 45);">
         <div class="col-4" style="background-color: rgb(221, 217, 160); margin-left: 0px;padding:20px;">
-            <h2 style="margin-bottom: 15px;">AYRINTILI KİTAP BİLGİLERİ</h2>
+            <h2 style="margin-bottom: 20px;">AYRINTILI KİTAP BİLGİLERİ</h2>
             <hr>
             <div class="row">
                 <div class="col-sm-4 p-1">
                     <!--  <input type="text" id="id" style="visibility: hidden" value="">   -->
-                    <label class="control-label labeltr">KİTAP KODU</label>
+                    <label class="control-label labeltr"> KİTAP KODU</label>
                 </div>
                 <div class="col-sm-8 p-1">
-                    <input type="text" id="kitapkodu" class="form-control" value="" required>
+                    <input type="text" id="kitapkodu" class="form-control editTr" value="" required>
                 </div>
             </div>
             <div class="row">
@@ -38,7 +51,7 @@
                     <label class="control-label labeltr">KİTAP ADI</label>
                 </div>
                 <div class="col-sm-8 p-1">
-                    <input type="text" id="kitapadi" class="form-control" value="" required>
+                    <input type="text" id="kitapadi" class="form-control editTr" value="" required>
                 </div>
             </div>
             <div class="row">
@@ -46,7 +59,7 @@
                     <label class="control-label labeltr">YAZAR</label>
                 </div>
                 <div class="col-sm-8 p-1">
-                    <input type="text" id="yazar" class="form-control" value="" required>
+                    <input type="text" id="yazar" class="form-control editTr" value="" required>
                 </div>
             </div>
             <div class="row">
@@ -54,7 +67,7 @@
                     <label class="control-label labeltr">YAYIN EVİ</label>
                 </div>
                 <div class="col-sm-8 p-1">
-                    <input type="text" id="yayinevi" class="form-control" value="" required>
+                    <input type="text" id="yayinevi" class="form-control editTr" value="" required>
                 </div>
             </div>
             <div class="row">
@@ -62,7 +75,7 @@
                     <label class="control-label labeltr">SAYFA SAYISI</label>
                 </div>
                 <div class="col-sm-8 p-1">
-                    <input type="text" id="sayfa" class="form-control" value="" required>
+                    <input type="text" id="sayfa" class="form-control editTr " value="" required>
                 </div>
             </div>
             <div class="row">
@@ -70,7 +83,7 @@
                     <label class="control-label labeltr">KİTAP TÜRÜ</label>
                 </div>
                 <div class="col-sm-8 p-1">
-                    <input type="text" id="kitapturu" class="form-control" value="" required>
+                    <input type="text" id="kitapturu" class="form-control editTr" value="" required>
                 </div>
             </div>
             <div class="row">
@@ -78,7 +91,7 @@
                     <label class="control-label labeltr">AÇIKLAMA</label>
                 </div>
                 <div class="col-sm-8 p-1">
-                    <input type="text" id="aciklama" class="form-control" value="" required>
+                    <input type="text" id="aciklama" class="form-control editTr" value="" required>
                 </div>
             </div>
             <hr>
@@ -98,7 +111,7 @@
             </div>
 
         </div>
-        <div class="col-8" style="background-color: aliceblue; padding:20px;">
+        <div class="col-8" style="background-color: aliceblue; padding:10px;">
             <h1>KİTAP LİSTESİ</h1>
             <hr>
             <table id="myTable" class="tablem table table-bordered table-hover table-striped dataTable">
@@ -116,7 +129,7 @@
             </table>
         </div>
     </div>
-
+</div>
     <script>
         var tTable;
         var araword;
@@ -126,7 +139,7 @@
             temizle();            
             tTable = $("#myTable").DataTable({
                 "paging": true,
-                "pageLength": 5,
+                "pageLength": 10,
                 "responsive": true,
                 "autoWidth": false,
                 //  "processing": true,
@@ -134,12 +147,14 @@
                     [1, "asc"]
                 ],
                 "ajax": {
-                    "url": '/kitapyukle',
+                    "url": '/kutuphane/kitapyukle',
                     "type": "GET",
                     "datatype": "json",
                     "dataSrc": "",
                 },
               //  "columnDefs": [{"visible": false,"targets": 0}],
+              
+              
                 columns: [{
                         "data": "kitaplarid"
                     }, {
@@ -184,7 +199,7 @@
         function ara(araword) {
             $.ajax({
                 type: 'POST',
-                url: "./getir",
+                url: "/kutuphane/getir",
                 data: {
                     kelime: araword
                 },
@@ -222,7 +237,7 @@
             temizle();
             $.ajax({
                 type: 'POST',
-                url: "./suz",
+                url: "/kutuphane/suz",
                 data: {
                     kelime: araword
                 },
@@ -246,7 +261,7 @@
                             [1, "asc"]
                         ],
                         "ajax": {
-                            "url": './filitre',
+                            "url": '/kutuphane/filitre',
                             "type": "POST",
                             "datatype": "json",
                             "dataSrc": "",
@@ -302,7 +317,7 @@
             var idtext = kId;
             $.ajax({
                 type: 'POST',
-                url: "./sil",
+                url: "/kutuphane/sil",
                 data: {
                     idtxt: idtext
                 },
@@ -352,7 +367,7 @@
             // var ozettext = document.getElementById("ozet").value;  
             $.ajax({
                 type: 'POST',
-                url: "./kaydet",
+                url: "/kutuphane/kaydet",
                 data: {
                     idtxt: idtext,
                     kodutxt: kodutext,
@@ -386,7 +401,7 @@
             var yayinevitext = document.getElementById("yayinevi").value;
             $.ajax({
                 type: 'POST',
-                url: "./guncelle",
+                url: "/kutuphane/guncelle",
                 data: {
                     idtxt: idtext,
                     kodutxt: kodutext,
@@ -412,7 +427,7 @@
             var knotext = dat;
             $.ajax({
                 type: 'POST',
-                url: "./sil",
+                url: "/kutuphane/sil",
                 data: {
                     knotxt: knotext
                 },
